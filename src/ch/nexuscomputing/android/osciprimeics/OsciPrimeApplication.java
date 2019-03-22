@@ -77,10 +77,7 @@ public class OsciPrimeApplication extends Application {
 	public static final int OFFSET_HANDLE_WIDTH = 200;
 	public static final int OFFSET_HANDLE_HEIGHT = 70;
 
-//	public static final int SOURCE_AUDIO = 0;
-//	public static final int SOURCE_USB = 1;
-//	public static final int SOURCE_NETWORK = 2;
-	
+
 	public enum SourceType{
 		AUDIO,
 		USB,
@@ -231,22 +228,15 @@ public class OsciPrimeApplication extends Application {
 	}
 
 	public OsciPrimeApplication() {
+		//初始化网格
 		initGrid();
-		initMeasurementHandles();
-		copyData(new int[pPointsOnView], new int[pPointsOnView], new int[2*pPreviewLen], new int[2*pPreviewLen], -1);
+		//初始化测量handle
+//		initMeasurementHandles();
+//		copyData(new int[pPointsOnView], new int[pPointsOnView], new int[2*pPreviewLen], new int[2*pPreviewLen], -1);
 	}
 
 	public float[] mGrid = new float[4*(GRID_COLS+1)+4*(GRID_ROWS+1)];
 	private void initGrid() {
-//		for (int i = 0; i <= GRID_COLS; i++) {
-//			mGridPath.moveTo(i * GRID_DIV - WIDTH / 2, HEIGHT / 2);
-//			mGridPath.lineTo(i * GRID_DIV - WIDTH / 2, -HEIGHT / 2);
-//		}
-//
-//		for (int i = 0; i <= GRID_ROWS; i++) {
-//			mGridPath.moveTo(-WIDTH / 2, i * GRID_DIV - HEIGHT / 2);
-//			mGridPath.lineTo(WIDTH / 2, i * GRID_DIV - HEIGHT / 2);
-//		} 
 		mOrigin.moveTo(0, -HEIGHT / 2);
 		mOrigin.lineTo(0, HEIGHT / 2);
 		for(int i = 0; i <= GRID_COLS; i++){
@@ -373,6 +363,7 @@ public class OsciPrimeApplication extends Application {
 		SharedPreferences sp = osciPrimeICSActivity.getSharedPreferences(
 				"default", MODE_PRIVATE);
 		mSurfaceView = surfaceView;
+		//获取上次配置
 		pTriggerChannel = sp.getInt("pTriggerChannel", CH1);
 		pEdgeCh1 = sp.getInt("pEdgeCh1", RISING);
 		pEdgeCh2 = sp.getInt("pEdgeCh2", RISING);

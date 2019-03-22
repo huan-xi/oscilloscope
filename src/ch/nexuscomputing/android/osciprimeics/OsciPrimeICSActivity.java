@@ -94,7 +94,8 @@ public class OsciPrimeICSActivity extends Activity {
 	public static OsciSurfaceView sSurfaceView;
 	public static OsciPrimeOverlayHelpView sOsciPrimeOverlayHelpView;
 
-	private final Handler mHandler = new Handler() {
+	@SuppressLint("HandlerLeak")
+    private final Handler mHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case STATUS:

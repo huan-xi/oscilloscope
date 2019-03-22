@@ -25,6 +25,7 @@ import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.usb.UsbConstants;
 import android.hardware.usb.UsbDevice;
@@ -33,6 +34,8 @@ import android.hardware.usb.UsbEndpoint;
 import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
 import android.hardware.usb.UsbRequest;
+import android.os.Build;
+
 import ch.nexuscomputing.android.osciprimeics.BuildConfig;
 import ch.nexuscomputing.android.osciprimeics.IServiceInterface;
 import ch.nexuscomputing.android.osciprimeics.L;
@@ -99,6 +102,7 @@ public class OsciUsbSource implements Source{
 		mSvc = svc;
 		mApplication = app;
 		mUsbManager = (UsbManager) app.getSystemService(Context.USB_SERVICE);
+		//usb 设备初始化
 		mUsbCont = new UsbController(app, mSvc,new IUsbConnectionHandler() {
 			@Override
 			public void onDeviceNotFound() {
@@ -166,6 +170,7 @@ public class OsciUsbSource implements Source{
 
 
 	private Runnable mLoop = new Runnable() {
+		@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
 		@Override
 		public void run() {
 			//TEST
@@ -504,24 +509,3 @@ public class OsciUsbSource implements Source{
 		resample(retrigger);
 	}
 }
-
-//if(sInterLeavedCh1Buffer == null){
-//sInterLeavedCh1Buffer = ByteBuffer.allocateDirect(4*pov);
-//sInterLeavedCh2Buffer = ByteBuffer.allocateDirect(4*pov);
-//sInterLeavedCh1Buffer.order(ByteOrder.nativeOrder());
-//sInterLeavedCh2Buffer.order(ByteOrder.nativeOrder());
-//L.d("crating buffers");
-//}
-//
-//if(sInterLeavedCh1Buffer.limit() != pov*4){
-//sInterLeavedCh1Buffer = ByteBuffer.allocateDirect(4*pov);
-//sInterLeavedCh2Buffer = ByteBuffer.allocateDirect(4*pov);
-//sInterLeavedCh1Buffer.order(ByteOrder.nativeOrder());
-//sInterLeavedCh2Buffer.order(ByteOrder.nativeOrder());
-//L.d("resizing buffers");
-//}
-//
-//sInterLeavedCh1Buffer.position(0);
-//sInterLeavedCh2Buffer.position(0);
-//sCopyCh1.position(0);
-//sCopyCh2.position(0);

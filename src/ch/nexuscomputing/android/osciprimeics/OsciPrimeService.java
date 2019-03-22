@@ -46,7 +46,10 @@ import android.os.RemoteException;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
-public class OsciPrimeService extends Service implements IServiceSinkInterface {
+	/**
+	 * 服务实现
+	 */
+	public class OsciPrimeService extends Service implements IServiceSinkInterface {
 	private OsciPrimeApplication mApplication;
 
 	private static final int NOTIFICATION_ID = 1337;
@@ -336,6 +339,7 @@ public class OsciPrimeService extends Service implements IServiceSinkInterface {
 
 	private boolean mWasSingleShot = false;
 
+	/**处理输入信号*/
 	@Override
 	public void onSourceSamples(int[] ch1, int[] ch2, int[] previewCh1, int[] previewCh2, int len, int found,
 			float offch1, float offch2) {

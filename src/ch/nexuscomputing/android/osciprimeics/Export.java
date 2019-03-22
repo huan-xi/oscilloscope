@@ -31,7 +31,10 @@ import java.util.Date;
 
 import android.os.Environment;
 
-public class Export {
+	/**
+	 * 文件导出
+	 */
+	public class Export {
 	
 	public static void export(OsciPrimeApplication app, int[] ch1, int[] ch2){
 		String datef = "dd.MM.yyyy-HH:mm:ss";

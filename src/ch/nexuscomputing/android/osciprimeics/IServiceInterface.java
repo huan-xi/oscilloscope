@@ -20,7 +20,10 @@
 
 package ch.nexuscomputing.android.osciprimeics;
 
-public interface IServiceInterface {
+    /**
+     * 基本采样服务
+     */
+    public interface IServiceInterface {
 	void onSourceSamples(int[] ch1, int[] ch2, int[] previewCh1, int[] previewCh2, int len, int found, float offch1, float offch2);
 	void onError();
 	boolean isRunning();

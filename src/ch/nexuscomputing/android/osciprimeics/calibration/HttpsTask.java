@@ -56,7 +56,6 @@ public class HttpsTask {
 	 * used for several requests, for instance send outbox
 	 *
 	 * @param url
-	 * @param params
 	 * @param callback
 	 */
 	public HttpsTask(String url, IResponseCallback callback) {

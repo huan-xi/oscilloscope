@@ -165,6 +165,7 @@ public class UsbController {
 
 	/**
 	 * dispatch to a new thread if coming from broadcastreceiver ... well either way always dispatch...
+	 * 上传16进制代码
 	 * @param d
 	 */
 	private void uploadhex(UsbDevice d) {

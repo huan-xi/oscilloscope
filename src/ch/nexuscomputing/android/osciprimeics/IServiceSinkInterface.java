@@ -20,7 +20,10 @@
 
 package ch.nexuscomputing.android.osciprimeics;
 
-public interface IServiceSinkInterface extends IServiceInterface{
+    /**
+     * 添加网络连接池
+     */
+    public interface IServiceSinkInterface extends IServiceInterface{
 	void startSampling();
 	void stopSampling();
 	void calibrateNextTime();

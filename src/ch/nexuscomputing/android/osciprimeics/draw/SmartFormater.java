@@ -22,7 +22,10 @@ package ch.nexuscomputing.android.osciprimeics.draw;
 
 import android.util.Pair;
 
-public class SmartFormater {
+	/**
+	 * 单位智能转换
+	 */
+	public class SmartFormater {
 	
 	/**
 	 * 
